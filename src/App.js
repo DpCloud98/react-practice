@@ -26,12 +26,23 @@ const testData = [
 const CardList = (props) => {
   return (
     <div>
-      {testData.map((profile) => (
+      {props.profile.map((profile) => (
         <Card {...profile} />
       ))}
     </div>
   );
 };
+
+class Form extends React.Component {
+  render() {
+    return (
+      <form action="">
+        <input type="text" placeholder="github username" />
+        <button>Add me</button>
+      </form>
+    );
+  }
+}
 
 class Card extends React.Component {
   render() {
@@ -60,7 +71,8 @@ class App extends React.Component {
     return (
       <div>
         <div className="header">{this.props.title}</div>
-        <CardList />
+        <Form />
+        <CardList profile={testData} />
       </div>
     );
   }
