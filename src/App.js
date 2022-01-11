@@ -23,12 +23,14 @@ const testData = [
   },
 ];
 
-const Cardlist = (props) => {
-  <div>
-    {testData.map((profile) => (
-      <Card {...profile} />
-    ))}
-  </div>;
+const CardList = (props) => {
+  return (
+    <div>
+      {testData.map((profile) => (
+        <Card {...profile} />
+      ))}
+    </div>
+  );
 };
 
 class Card extends React.Component {
@@ -36,10 +38,15 @@ class Card extends React.Component {
     const profile = this.props;
     return (
       <div>
-        <div className="github-profile">
-          <img src={profile.avatar_url} />
-          <div className="info">
-            <div className="name">{profile.name}</div>
+        <div className="github-profile" style={{ margin: '1rem' }}>
+          <img src={profile.avatar_url} style={{ width: '25%' }} />
+          <div
+            className="info"
+            style={{ display: 'inline-block', marginLeft: 10 }}
+          >
+            <p className="name" style={{ fontSize: '125%' }}>
+              {profile.name}
+            </p>
             <div className="company">{profile.company}</div>
           </div>
         </div>
@@ -53,7 +60,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="header">{this.props.title}</div>
-        <Card />
+        <CardList />
       </div>
     );
   }
